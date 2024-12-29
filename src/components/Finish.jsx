@@ -1,7 +1,7 @@
 import React from 'react'
-import SignInForm from './blocks/SignInForm'
-import SocialSignIn from './blocks/SocialSignIn'
-import Confetti from './blocks/COnfetti'
+import SignInForm from './blocks/login/SignInForm'
+import SocialSignIn from './blocks/login/SocialSignIn'
+import Confetti from './blocks/confession/Confetti'
 
 const Finish = () => {
   return (

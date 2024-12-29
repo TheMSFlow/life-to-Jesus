@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from './global/Header'
-import HeroComponent from './blocks/HeroComponent'
+import HeroComponent from './blocks/general/HeroComponent'
 import { useNavigate } from 'react-router-dom'
 
 

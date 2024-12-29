@@ -1,7 +1,7 @@
 import React from 'react'
-import LyricsPlayer from './blocks/LyricsPlayer'
+import LyricsPlayer from './blocks/confession/LyricsPlayer'
 import salvationPrayerLyrics from './utils/salvationPrayerLyrics'
-import Title from './blocks/Title'
+import Title from './blocks/general/Title'
 
 const Confession = ({userStatus}) => {
   return (

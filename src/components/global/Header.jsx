@@ -1,5 +1,5 @@
 import React from 'react'
-import Toggle from '../blocks/Toggle'
+import Toggle from './Toggle'
 
 
 const Header = ({icon, logo, toggle, className}) => {

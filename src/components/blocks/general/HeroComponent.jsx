@@ -1,7 +1,7 @@
 import React from 'react'
 import Title from './Title'
 import Info from './Info'
-import Button from './Button'
+import Button from '../../global/Button'
 
 
 const HeroComponent = ({title, bibleVerse, info, cta, onClick, icon, img }) => {

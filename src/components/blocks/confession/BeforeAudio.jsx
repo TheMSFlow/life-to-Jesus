@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from './Button'
+import Button from '../../global/Button'
 import CountdownTimer from './CountdownTimer'
 
 const BeforeAudio = ({handleSoundOn, HandleSoundOff}) => {
