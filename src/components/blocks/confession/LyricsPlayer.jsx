@@ -107,8 +107,18 @@ const LyricsPlayer = ({ audioSrc, lyricsData, highlightColor = 'black', classNam
   };
 
   const handleSoundOn = () => {
-    startAudio(false);
-  }
+    // Requesting autoplay permission by trying to play the audio
+    const audio = audioRef.current;
+    
+    // If the browser blocks autoplay, this will throw an error
+    audio.play().then(() => {
+      startAudio(false);
+    }).catch(error => {
+      console.error("Autoplay failed: ", error);
+      // Handle error (show message, retry logic, etc.)
+    });
+  };
+  
 
   const handleSoundOff = () => {
     startAudio(true);
