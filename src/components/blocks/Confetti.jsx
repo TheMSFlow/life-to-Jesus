@@ -6,16 +6,24 @@ const Confetti = () => {
     const count = 200;
     const defaults = { origin: { y: 0.7 } };
 
-    function fire(particleRatio, opts) {
+    const fire = (particleRatio, opts) => {
       confetti({
         ...defaults,
         ...opts,
         particleCount: Math.floor(count * particleRatio),
       });
-    }
+    };
+
+    const playSound = () => {
+      const sound = new Audio("/confetti-sound.mp3"); // Replace with your sound file path
+      sound.play().catch((error) => {
+        console.error("Error playing sound:", error);
+      });
+    };
 
     // Function to run confetti bursts
     const startConfetti = () => {
+      playSound(); // Play sound effect once
       fire(0.25, {
         spread: 26,
         startVelocity: 55,
@@ -40,21 +48,14 @@ const Confetti = () => {
       });
     };
 
-    // Trigger bursts every 500ms for 3 seconds
-    const interval = setInterval(startConfetti, 500);
+    // Trigger the confetti once
+    startConfetti();
 
-    // Stop confetti after 3 seconds
-    const timeout = setTimeout(() => {
-      clearInterval(interval);
-    }, 1000);
-
-    // Cleanup on unmount
-    return () => {
-      clearInterval(interval);
-      clearTimeout(timeout);
-    };
+    // Cleanup (optional, no intervals or timeouts to clear)
+    return () => {};
   }, []);
 
+  return null; // Or add a placeholder UI component
 };
 
 export default Confetti;
