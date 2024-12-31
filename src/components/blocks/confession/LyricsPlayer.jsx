@@ -1,9 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import AfterAudio from './AfterAudio';
 import BeforeAudio from './BeforeAudio';
 
-const LyricsPlayer = ({ audioSrc, lyricsData, highlightColor = 'black', className, userStatus }) => {
+const LyricsPlayer = ({ audioSrc, lyricsData, highlightColor = 'black', className, onFinish }) => {
   const [currentLyricIndex, setCurrentLyricIndex] = useState(0);
   const [isAudioEnded, setIsAudioEnded] = useState(false);
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
@@ -11,8 +10,6 @@ const LyricsPlayer = ({ audioSrc, lyricsData, highlightColor = 'black', classNam
   const audioRef = useRef(null);
   const lyricsContainerRef = useRef(null);
   const activeLyricRef = useRef(null);
-
-  const navigate = useNavigate;
 
   useEffect(() => {
     if (!userHasChosen) {
@@ -143,11 +140,6 @@ const LyricsPlayer = ({ audioSrc, lyricsData, highlightColor = 'black', classNam
   startAudio(isMuted);
   };
 
-  const handleFinish = () => {
-    userStatus();
-    navigate('/finish');
-  }
-
   useEffect(() => {
     const audio = audioRef.current;
   
@@ -164,6 +156,7 @@ const LyricsPlayer = ({ audioSrc, lyricsData, highlightColor = 'black', classNam
       audio.removeEventListener('volumechange', handleMuteChange);
     };
   }, []);
+
 
   return (
     <>
@@ -204,7 +197,7 @@ const LyricsPlayer = ({ audioSrc, lyricsData, highlightColor = 'black', classNam
 
           {isAudioEnded && (
             <AfterAudio 
-            handleFinish={handleFinish}
+            handleFinish={onFinish}
             handleReplay={handleReplay}
             />
           )}

@@ -3,7 +3,8 @@ import LyricsPlayer from './blocks/confession/LyricsPlayer'
 import salvationPrayerLyrics from './utils/salvationPrayerLyrics'
 import Title from './blocks/general/Title'
 
-const Confession = ({userStatus}) => {
+const Confession = ({handleFinish}) => {
+  
   return (
     <>
     <main className='flex flex-col h-svh justify-center items-center '>
@@ -19,7 +20,7 @@ const Confession = ({userStatus}) => {
           lyricsData={salvationPrayerLyrics}
           highlightColor='black'
           className={' w-[70vw] h-[60vh] xl:w-[60rem] xl:h-[25rem]'}
-          userStatus={userStatus}
+          onFinish={handleFinish}
           />
         </div>
       </section>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { MemoryRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import SplashScreen from "./components/SplashScreen"
 import Start from "./components/Start"
@@ -7,15 +7,18 @@ import Finish from "./components/Finish"
 import Home from './components/Home'
 import BibleReader from './components/BibleReader'
 import ThemeProvider from "./components/context/ThemeContext"
-
+import { useNavigate } from 'react-router-dom';
 
 
 function App() {
+  const navigate = useNavigate;
   const [sinner, setSinner] = useState(() => !localStorage.getItem('bornAgain'));
+ 
 
   const newUserStatus = () => {
     localStorage.setItem('bornAgain', 'true')
     setSinner(false);
+    navigate('/finish');
   }
 
   return (
@@ -30,7 +33,7 @@ function App() {
           {sinner && (
             <>
               <Route path='/start' element={<Start />} />
-              <Route path='/confession' element={<Confession userStatus={newUserStatus} />} />
+              <Route path='/confession' element={<Confession handleFinish={newUserStatus} />} />
             </>
           )}
           <Route path='finish' element={<Finish />} />
