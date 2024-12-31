@@ -26,6 +26,13 @@ export default {
       moon: 'var(--opacity-moon)',
       night: 'var(--opacity-night)',
       offset: 'var(--offset)',
+      'bible-bg': 'var(--bible-bg)',
+      'bible-text': 'var(--bible-text)',
+      'bible-subtle-text': 'var(--bible-subtle-text)',
+      'bible-pill': 'var(--bible-pill)',
+      'bible-pill-text': 'var(--bible-pill-text)',
+      'bible-pill-bg': 'var(--bible-pill-bg)',
+      'bible-pill-dark': 'var(--bible-pill-dark)',
     },
     screens: {
       'sm': '500px',
