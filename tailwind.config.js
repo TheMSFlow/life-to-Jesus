@@ -33,6 +33,8 @@ export default {
       'bible-pill-text': 'var(--bible-pill-text)',
       'bible-pill-bg': 'var(--bible-pill-bg)',
       'bible-pill-dark': 'var(--bible-pill-dark)',
+      'bible-pill-dark-hover': 'var(--bible-pill-dark-hover)',
+      't-border': 'var(--bible-top-border)',
     },
     screens: {
       'sm': '500px',

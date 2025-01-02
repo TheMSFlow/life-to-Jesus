@@ -33,6 +33,8 @@
         --bible-pill-text: rgba(253, 253, 253, 1.0);
         --bible-pill-bg: rgba(168, 195, 188, 1.0);
         --bible-pill-dark: rgba(124, 140, 136, 1.0);
+        --bible-pill-dark-hover: rgba(168, 195, 188, 1.0);
+        --bible-top-border: rgba(192, 192, 192, 0.15);
       }
 
     [data-theme='dark'] {
@@ -62,6 +64,8 @@
         --bible-pill-text: rgba(192, 192, 192, 1.0);
         --bible-pill-bg: rgba(18, 18, 18, 1.0);
         --bible-pill-dark: rgba(30, 30, 30, 1.0);
+        --bible-pill-dark-hover: rgba(18, 18, 18, 1.0);
+        --bible-top-border: rgba(192, 192, 192, 0.05);
     }
       
     html {
@@ -79,5 +83,14 @@
     html, body, #root {
         @apply h-full w-full
     }
+
+    .scrollbar-hide::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, and Edge */
+      }
+      
+      .scrollbar-hide {
+        -ms-overflow-style: none; /* Internet Explorer 10+ */
+        scrollbar-width: none; /* Firefox */
+      }
 
 }

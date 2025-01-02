@@ -1,7 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const SocialSignIn = () => {
-    const handleGoogleSignIn = () => {}
+    const navigate = useNavigate();
+
+    const handleGoogleSignIn = () => {
+        navigate('/bible')
+    }
     const handleXSignIn = () => {}
     const handleFacebookSignIn = () => {}
   return (
