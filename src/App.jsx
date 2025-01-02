@@ -13,6 +13,7 @@ import { useNavigate } from 'react-router-dom';
 function App() {
   const navigate = useNavigate;
   const [sinner, setSinner] = useState(() => !localStorage.getItem('bornAgain'));
+  const [isLoggedIn, setIsLoggedIn] = useState(() => !!localStorage.getItem('loggedIn'));
  
 
   const newUserStatus = () => {
@@ -21,15 +22,33 @@ function App() {
     navigate('/finish');
   }
 
+  const loginHandler = () => {
+    localStorage.setItem('loggedIn', 'true');
+    setIsLoggedIn(true);
+  };
+
+  const logoutHandler = () => {
+    localStorage.removeItem('loggedIn');
+    setIsLoggedIn(false);
+  };
+
   return (
     <>
     <ThemeProvider>
       <Router>
         <Routes>
-          <Route
-          path='/'
-          element={sinner ? <SplashScreen /> : <Navigate to="/finish" replace />} 
-          />
+        <Route
+              path="/"
+              element={
+                isLoggedIn ? (
+                  <Navigate to="/bible" replace />
+                ) : sinner ? (
+                  <SplashScreen />
+                ) : (
+                  <Navigate to="/finish" replace />
+                )
+              }
+            />
           {sinner && (
             <>
               <Route path='/start' element={<Start />} />

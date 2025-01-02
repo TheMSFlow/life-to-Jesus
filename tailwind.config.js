@@ -8,6 +8,7 @@ export default {
     colors: {
       background: 'var(--color-bg)',
       heading: 'var(--color-heading)',
+      news: 'var(--color-news)',
       text: 'var(--color-text)',
       'fair-black': 'var(--color-pill-text)',
       title: 'var(--color-pill-bg)',
