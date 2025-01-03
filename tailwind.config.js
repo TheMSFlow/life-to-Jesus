@@ -39,9 +39,9 @@ export default {
       't-border': 'var(--bible-top-border)',
     },
     screens: {
-      'sm': '500px',
-      'md': '600px',
-      'lg': '768px',
+      'sm': '320px',
+      'md': '767px',
+      'lg': '1023px',
       'xl': '1024px',
       '2xl': '1200px',
       '3xl': '1536px'

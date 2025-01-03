@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import bibleBooks from '../../utils/bibleBooks.json';
 
 
-const BibleAccordion = ({ books, setSelectedBook, setSelectedChapter }) => {
+const BibleAccordion = ({ books, setSelectedBook, setSelectedChapter, setSideBarVisible }) => {
   const [activeBook, setActiveBook] = useState(null); // Track the active accordion
   const activeBookRef = useRef(null); // Reference to the active book container
 
@@ -14,15 +13,15 @@ const BibleAccordion = ({ books, setSelectedBook, setSelectedChapter }) => {
   const handleChapterClick = (chapter) => {
     if (activeBook) {
       setSelectedChapter(chapter); // Update parent state
-      localStorage.setItem(
-        'selectedBookChapter',
-        JSON.stringify({ book: activeBook, chapter })
-      );
+      setSideBarVisible(false); // Hide the sidebar
     }
   };
-
+  
+ //Scroll to top for xl breakpoint and higher
   useEffect(() => {
-    if (activeBookRef.current) {
+    const isXlScreen = window.matchMedia('(min-width: 1023px)').matches; 
+
+    if (activeBookRef.current && isXlScreen) {
       activeBookRef.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start', // Scroll to the top of the parent

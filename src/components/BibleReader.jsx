@@ -14,6 +14,9 @@ const BibleReader = () => {
   const [currentBookChapter, setCurrentBookChapter] = useState({ book: null, chapter: null });
   const [isTraditional, setIsTraditional] = useState(true);
   const [sortedBooks, setSortedBooks] = useState(bibleBooks);
+  const [sidebarVisible, setSidebarVisible] = useState(false); // Track visibility of the sidebar
+  
+
 
   useEffect(() => {
     const storedSelection = JSON.parse(localStorage.getItem('selectedBookChapter'));
@@ -74,22 +77,31 @@ const BibleReader = () => {
     }
   };
 
-  const handleClose = () => {
+  const handleSectionClose = () => {
+    setSidebarVisible(false); // Hide the sidebar on close
+  };
 
-  }
+  const handleSectionReveal = () => {
+    setSidebarVisible(true); // Reveal the sidebar
+  };
   
   return (
     <>
-    <main className='block xl:grid xl:grid-cols-[400px_minmax(0,1fr)] xl:gap-0 max-h-[100svh]  overflow-y-auto overflow-x-hidden w-screen bg-bible-bg'>
+    <main className='relative block xl:grid xl:grid-cols-[400px_minmax(0,1fr)] xl:gap-0 max-h-[100svh]  xl:overflow-y-auto overflow-x-hidden overflow-hidden w-screen bg-bible-bg'>
       {/* Sidebar, Mobile & Modal */}
-    <section className='w-full h-[100vh] bg-bible-pill-dark'>
+    <section 
+    className={`${
+      sidebarVisible ? 'lg:fixed top-0 left-0 z-2 xl:static' : 'hidden'
+    } xl:block w-full h-[100vh] bg-bible-pill-dark transition-all duration-300`}
+    >
       <BooksHeader 
-        onClose={handleClose}
+        onClose={handleSectionClose}
       />
       <BibleAccordion 
         setSelectedBook={setSelectedBook}
         setSelectedChapter={setSelectedChapter}
         books={sortedBooks}
+        setSideBarVisible={handleSectionClose}
       />
       <BooksSorter
         onTraditional={handleTraditionalSorting}
@@ -102,6 +114,7 @@ const BibleReader = () => {
       <BibleHeader 
         book={currentBookChapter.book}
         chapter={currentBookChapter.chapter}
+        onSection={handleSectionReveal}
       />
       <VersesComponent 
         book={selectedBook}

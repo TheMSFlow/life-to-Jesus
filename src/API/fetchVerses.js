@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const fetchVerses = async (book, chapter) => {
-    const key = '2d6d924b-e3e8-429f-be53-97bf5a507575';
+    const key = import.meta.env.VITE_NLT_API_KEY;
     const baseUrl = 'https://api.nlt.to/api/passages';
     const ref = `${book}.${chapter}`;
     const query = `?ref=${encodeURIComponent(ref)}&key=${encodeURIComponent(key)}&version=NLT`;

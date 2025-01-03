@@ -13,13 +13,13 @@ const BooksHeader = ({onClose}) => {
                 <p>Books</p>
             </div>
             <div>
-              <div 
+              <button 
               onClick={onClose}
               className='xl:hidden text-bible-subtle-text'>
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M12 28C18.2484 21.7516 21.7516 18.2484 28 12M28 28C21.7516 21.7516 18.2484 18.2484 12 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              </div>
+              </button>
             </div>
         </div>
     </>
