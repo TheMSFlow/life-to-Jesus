@@ -4,6 +4,7 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  plugins: [require('@tailwindcss/typography')],
   theme: {
     colors: {
       background: 'var(--color-bg)',
@@ -49,6 +50,13 @@ export default {
       fontFamily: {
         inter: ['Inter', 'san-serif'],
         garamond: ['Cormorant Garamond', 'serif'],
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            
+          }
+        }
       }
     },
   },

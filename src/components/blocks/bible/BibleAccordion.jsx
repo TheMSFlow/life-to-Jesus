@@ -1,23 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import bibleBooks from '../../utils/bibleBooks.json';
 
-const BibleAccordion = ({setSelectedBook, setSelectedChapter}) => {
-  const [activeBook, setActiveBook] = useState(null); // Track the active accordion
 
+const BibleAccordion = ({ books, setSelectedBook, setSelectedChapter }) => {
+  const [activeBook, setActiveBook] = useState(null); // Track the active accordion
+  const activeBookRef = useRef(null); // Reference to the active book container
 
   const handleBookClick = (book) => {
     setActiveBook((prevBook) => (prevBook === book ? null : book)); // Toggle accordion
-    setSelectedBook(book); //update parent state
+    setSelectedBook(book); // Update parent state
   };
 
   const handleChapterClick = (chapter) => {
-    setSelectedChapter(chapter); //update parent state
+    if (activeBook) {
+      setSelectedChapter(chapter); // Update parent state
+      localStorage.setItem(
+        'selectedBookChapter',
+        JSON.stringify({ book: activeBook, chapter })
+      );
+    }
   };
+
+  useEffect(() => {
+    if (activeBookRef.current) {
+      activeBookRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start', // Scroll to the top of the parent
+      });
+    }
+  }, [activeBook]);
 
   return (
     <div className="w-full h-[76%] overflow-y-auto scrollbar-hide pb-3 bg-bible-pill-dark">
-      {bibleBooks.map((book) => (
-        <div key={book.name}>
+      {books.map((book) => (
+        <div 
+        key={book.name}
+        ref={activeBook === book.name ? activeBookRef : null}
+        >
           {/* Book Header */}
           <button
             onClick={() => handleBookClick(book.name)}
@@ -35,12 +54,12 @@ const BibleAccordion = ({setSelectedBook, setSelectedChapter}) => {
 
           {/* Chapters (Show if Active) */}
           {activeBook === book.name && (
-            <div className='flex flex-wrap justify-between px-2'>
+            <div className='flex flex-wrap gap-y-2 gap-x-2 p-2'>
               {[...Array(book.chapters)].map((_, i) => (
                 <button
                   key={i + 1}
                   onClick={() => handleChapterClick(i + 1)}
-                  className="w-[4.375rem] h-[4.375rem] px-4 text-bible-pill-text hover:bg-bible-pill-dark-hover"
+                  className="w-[4.375rem] h-[4.375rem] px-4 text-bible-pill-text hover:bg-bible-pill-dark-hover border border-bible-pill-text"
                 >
                   {i + 1}
                 </button>

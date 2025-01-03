@@ -95,4 +95,23 @@
         scrollbar-width: none; /* Firefox */
       }
 
+      .bk_ch_vs_header {
+        display: none !important;
+      }
+
+      .chapter-number {
+        display: none;
+      }
+
+      span .tn {
+        color: var(--color-text);
+        background-color: var(--bible-bg);
+      }
+
+      h3 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+
+
 }

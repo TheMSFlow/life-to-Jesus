@@ -20,7 +20,7 @@ const SignInForm = ({onStepChange}) => {
       // Set up action code settings (URL to redirect after email link sign-in)
       const actionCodeSettings = {
         // URL to redirect to after email link is clicked
-        url: 'http://localhost:5176/bible',  // Update this URL
+        url: 'http://localhost:5174/bible',  // Update this URL
         handleCodeInApp: true,  // Handle the code inside the app
       };
 
